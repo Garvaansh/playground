@@ -1,0 +1,8 @@
+#  To ignore all the .exe files.
+*.exe
+
+# to ignore all .txt files.
+*.txt
+
+# Build directory
+cpp/build/
