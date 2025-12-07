@@ -6,3 +6,7 @@
 
 # Build directory
 cpp/build/
+
+#tests
+test_data/
+tests/
