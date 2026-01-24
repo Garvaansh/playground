@@ -2,11 +2,15 @@
 using namespace std; 
 
 class binary {
-  // Approach: Convert decimal to binary by repeatedly dividing by 2 and collecting remainders.
+  // Approach 1: Convert decimal to binary by repeatedly dividing by 2 and collecting remainders.
   // Start from LSB (least significant bit), build string in reverse, then reverse it.
-  // Time: O(log n) - number of bits in n.
-  // Space: O(log n) - for the result string.
-  // Edge case: n=0 returns "0".
+  // Example: Take n=5.
+  // 5 / 2 = 2 rem 1
+  // 2 / 2 = 1 rem 0
+  // 1 / 2 = 0 rem 1
+  // Reverse: 101
+  // Time: O(log n)
+  // Space: O(log n)
   string decimal2binary(int n) {
     if (n == 0) return "0";  // Special case for 0
     string res = "";
@@ -18,11 +22,14 @@ class binary {
     return res;
   }
 
-  // Approach: Convert binary string to decimal by processing from right to left (LSB to MSB).
+  // Approach 2: Convert binary string to decimal by processing from right to left (LSB to MSB).
   // Use a power variable starting at 1 (2^0), multiply by 2 each step.
-  // Time: O(n) - where n is string length.
-  // Space: O(1) - constant extra space.
-  // Assumes valid binary string (only '0' and '1').
+  // Example: Take s="101".
+  // i=2 (s[2]='1'): res += 1 * 1 = 1, power = 2
+  // i=1 (s[1]='0'): res += 0, power = 4
+  // i=0 (s[0]='1'): res += 1 * 4 = 4, total res=5
+  // Time: O(n)
+  // Space: O(1)
   int binary2decimal(string s) {
     int res = 0;
     int power = 1; // 2^0
