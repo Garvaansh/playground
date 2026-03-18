@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "../../imports/node.h"
+#include "../../imports/Linked_List/SinglyLL.h"
 using namespace std; 
 
 //! Stack Implementation techniques
