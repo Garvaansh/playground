@@ -3,6 +3,7 @@
 
 # to ignore all .txt files.
 *.txt
+!requirements.txt
 
 # environment files
 .env
@@ -12,6 +13,12 @@
 # Node
 node_modules/
 package-lock.json
+
+# python
+.venv/
+venv/
+__pycache__/
+*.pyc
 
 # Build directory
 cpp/build/
