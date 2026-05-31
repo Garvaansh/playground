@@ -1,0 +1,14 @@
+school:
+  - name: JNS
+    location: Bangalore
+    Principal: Someone
+    students:
+      - name: Ravi
+        age: 15
+        grade: 10
+      - name: Sita
+        age: 14
+        grade: 9
+      - name: Ansh
+        age: 16
+        grade: 11

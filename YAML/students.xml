@@ -1,0 +1,25 @@
+<!-- Provide versions, encodings -->
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<School name="JNS" principal="Someone">
+  <students>
+      <student> 
+        <id>1 </id> 
+        <name>"John Doe"</name>
+        <grade>"A"</grade>
+      </student>
+
+      <student> 
+        <id>2 </id> 
+        <name>"Meowww"</name>
+        <grade>"B"</grade>
+      </student>
+      
+      <student> 
+        <id>2 </id> 
+        <name>"Lizardddd"</name>
+        <grade>"C"</grade>
+      </student>
+  </students>
+</School>

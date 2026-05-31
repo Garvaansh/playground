@@ -1,0 +1,25 @@
+# Key value pair
+"apple": "red fruit"
+"age": 20
+1: "one"
+
+--- # seperator for multiple documents in a single file
+# Lists
+Fruits:
+  - apple
+  - banana
+  - orange
+  # Yaml is case sensitive
+  - Apple # Apple and apple are different objetcs
+
+---
+cities:
+  - New York
+  - London
+  - Paris
+---
+cities: ["New York", "London", "Paris"] # Another way to write lists, avoids indentaion errors
+---
+{ Persons: [{ Name: "Ansh", Age: 30 }, { Name: "Meow", Age: 8 }] } # Another way to write dictionaries, avoids indentation errors
+
+... # Tell the compiler that the document has ended

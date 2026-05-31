@@ -1,0 +1,30 @@
+
+{
+  "theory": [
+    { "title": "{}",
+      "description" : "This represents a single object/entity inside an array. It can be used to represent a collection of similar objects/entities."
+  },
+  { "title": "[]",
+    "description" : "This represents an array of objects/entities. It can be used to represent a collection of similar objects/entities."
+  }
+  ], 
+
+  "school": [ {
+    "name": "JNS",
+    "location": "Bangalore",
+    "Principal": "Someone", 
+    "students" : [
+      {
+        "name": "Ravi",
+        "age": 15,
+        "grade": 10
+      },
+      {
+        "name": "Sita",
+        "age": 14,
+        "grade": 9
+      }
+    ]
+  }
+  ]
+}

@@ -1,0 +1,39 @@
+# Strings variables
+myself: Ansh
+fruit: "apple"
+job: "swe"
+
+bio: |
+  My name is ansh.
+  I am a software engineer.
+
+# Write a single line in multi line string
+message: >
+  Hello, this is a message
+  that spans multiple lines.
+
+# ^ same as, but don't resuse the same key name again.
+myMessage: this is a message that spans multiple lines.
+myMessage_data: !!str this is a message that spans multiple lines.
+
+# Integer, Float, Boolean
+number: 2134
+marks: 95.5
+# No, False, Off, 0 are considered false in YAML,
+# while Yes, True, On, 1 are considered true
+boolean: No
+
+# Specify data types explicitly
+zero: !!int 0
+negative: !!int -5
+binary_Num: !!int 010101
+hexa: !!int 0x1A
+commaValue: !!int +540_000 # 540,000 with an underscore for readability
+
+is_valid: !!bool true
+pi: !!float 3.14
+not_a_num: .nan
+positive_inf: .inf
+
+surname: !!null null # Null, ~, null value
+~: # this is a null key

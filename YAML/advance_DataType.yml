@@ -1,0 +1,80 @@
+# sequence
+students: !!seq
+  - marks
+  - name
+  - roll_no
+
+# like this as well
+students_list: !!seq [marks, name, roll_no]
+
+# sparse sequence - some keys of seq will be empty
+sparse_seq: !!seq
+  - marks
+  - name
+  -
+  -
+  - Null
+
+# Nested sequence
+nested_seq:
+  - - name: Ansh
+      marks: 95
+      roll_no: 1
+  - - name: Meow
+      marks: 85
+      roll_no: 2
+
+# key value pairs are called maps
+maps: !!map
+  name: Ansh
+  marks: 95
+  roll_no: 1
+
+# nested maps
+nested_maps:
+  role: software engineer
+  details:
+    name: Ansh
+    age: 30
+    city: New York
+
+# pairs: keys may have duplicate value
+pairs: !!pairs
+  - name: Ansh
+  - name: Meow
+
+# same as
+myPairs: !!pairs [name: Ansh, name: Meow]
+# this will be an array of hashtable
+
+# !!set will have unique keys, values will be null
+unique_set: !!set
+  ? Ansh
+  ? Meow
+  # ? Ansh # duplicate key, will be ignored
+
+# dictionary !!omap - ordered map, preserves the order of keys
+people: !!omap
+  - name: Ansh
+    age: 30
+  - name: Meow
+    age: 8
+
+# reusing properties using anchors
+likings: &likes
+  fave_fruit: apple
+  dislikes: mango
+
+person1: # brute force way
+  name: Ansh
+  fave_fruit: apple
+  dislikes: mango
+
+person2: # using anchors
+  name: Meow
+  <<: *likes # merge the properties from likes anchor
+
+person3: # using anchors with overrides
+  name: Tom
+  <<: *likes
+  fave_fruit: banana # override the fave_fruit property from likes anchor
