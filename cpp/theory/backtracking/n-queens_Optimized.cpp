@@ -4,76 +4,55 @@
 using namespace std;
 
 typedef vector<vector<string>> vvs;
-typedef vector<vector<int>> vvi;
 
+//! Optimized Version of N-Queens
 class Solution {
    public:
+    int N;
+    unordered_set<int> cols;        // To track columns where queens are placed
+    unordered_set<int> Major_diag;  // To track major diagonals (row - col)
+    unordered_set<int> Minor_diag;  // To track major diagonals (row + col)
+
     vvs solveNQueens(int n) {
+        N = n;
         // Initialize a board of n x n  with bool values, (0 for empty, 1 for queen)
         // ! for n = 3
         // { 1 0 0 }
         // { 0 0 1 }
         // { 0 1 0 }
-        vvi board(n, vector<int>(n, 0));
+        vector<string> board(N, string(N, '.'));
         vvs res;
-        solve(board, 0, 0, n, res);
+        solve(board, 0, 0, res);
 
         return res;
     }
 
-    void solve(vvi& board, int row, int col, int n, vvs& res) {
-        if (row == n) {
-            vector<string> path;
-            buildPath(board, path);
-            res.push_back(path);
+    void solve(vector<string>& board, int row, int col, vvs& res) {
+        if (row == N) {
+            res.push_back(board);
             return;
         }
 
-        for (int c = 0; c < n; c++) {
-            if (isSafe(board, row, c, n)) {
-                board[row][c] = 1;                 // Place the queen
-                solve(board, row + 1, 0, n, res);  // Recur to place the next queen
-                board[row][c] = 0;                 // Backtrack
+        for (int c = 0; c < N; c++) {
+            if (cols.count(c) || Major_diag.count(row - c) || Minor_diag.count(row + c)) {
+                continue;  // Skip if placing a queen here would lead to a conflict
             }
-        }
-    }
 
-    // helper function to check if it's safe to place a queen at (row, col)
-    bool isSafe(vvi& board, int row, int col, int n) {
-        // Traverse the column upwards
-        for (int r = 0; r < row; r++) {
-            if (board[r][col] == 1) {
-                return false;
-            }
-        }
+            // Place the queen and mark the column, and diagonals are occupied
+            board[row][c] = 'Q';
+            cols.insert(c);
+            Major_diag.insert(row - c);
+            Minor_diag.insert(row + c);
 
-        // Traverse the upper left diagonal
-        for (int r = row, c = col; r >= 0 && c >= 0; r--, c--) {
-            if (board[r][c] == 1) {
-                return false;
-            }
-        }
+            // Recur to place queens in the next row
+            solve(board, row + 1, c, res);
 
-        // Traverse the upper right diagonal
-        for (int r = row, c = col; r >= 0 && c < n; r--, c++) {
-            if (board[r][c] == 1) {
-                return false;
-            }
+            // Backtrack: Remove the queen and unmark the column, and diagonals
+            board[row][c] = '.';
+            cols.erase(c);
+            Major_diag.erase(row - c);
+            Minor_diag.erase(row + c);
         }
-
-        return true;
-    }
-
-    // helper function to build the path of the current board configuration
-    vector<string> buildPath(vvi& board, vector<string>& path) {
-        for (const auto& row : board) {
-            string s;
-            for (int cell : row) {
-                s += (cell == 1 ? 'Q' : '.');
-            }
-            path.push_back(s);
-        }
-        return path;
     }
 };
 
